@@ -5,16 +5,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class DataService {
+export class ChartDataService {
     constructor(private _http: Http) { }
 
-    public getChartData(path: string): Observable<any> {
+    public getData(path: string): Observable<any> {
         return this._http.get(`../assets/${path}`)
             .map((res: Response) => res.json())
-            .catch(this.handleError);
-    }
-
-    handleError(error: any) {
-        return Observable.throw(error.json().error || 'Server error')
+            .catch(err => {
+                return Observable.throw(err.json().error || 'Error while loading data');
+            });
     }
 }

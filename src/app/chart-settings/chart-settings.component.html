@@ -1,0 +1,11 @@
+<h4>{{ dataSources[currentSourceIndex].caption }}</h4>
+
+<div class="dropdown">
+    <button class="dropbtn"><i class="material-icons">tune</i></button>
+    <div class="dropdown-content">
+        <a href="#" *ngFor="let dataSource of dataSources"
+                    (click)="changeDataSource(dataSource)">
+            {{ dataSource.caption}}
+        </a>
+    </div>
+</div>

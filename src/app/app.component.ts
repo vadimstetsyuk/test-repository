@@ -1,33 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from './data.service';
+import { Component } from '@angular/core';
+import { ChartDataService } from './services/chart-data.service';
 
 @Component({
     moduleId: module.id,
     selector: 'app',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
     data: any;
-    chartCaption: string;
-    filename: string;
+    currentSource: any;
 
-    constructor(private dataService: DataService) {
-        this.chartCaption = `test`;
-        this.getData(`chart-data.json`);           
-    }
-
-    ngOnInit() {
+    constructor(private chartDataService: ChartDataService) {
+        this.data = [];
+        this.currentSource = {};
     }
 
     getData(filename: string) {
-        this.dataService.getChartData(filename).subscribe(data => {
-            this.data = data;        
+        this.chartDataService.getData(filename).subscribe(data => {
+            this.data = data;
         });
     }
 
-    loadData(filename: string) {
-        this.filename = filename;
-        this.getData(this.filename);
+    onDataChange(dataSource: any) {
+        this.currentSource = dataSource;
+        this.getData(dataSource.path);
     }
 }

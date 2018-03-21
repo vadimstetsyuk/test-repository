@@ -1,5 +1,5 @@
-<switch-data (onChangeOption)="loadData($event)"></switch-data>
-
 <div class="container">
+    <chart-settings (onChangeDataSource)="onDataChange($event)"></chart-settings>
+
     <bar-chart [data]="data" [chartCaption]="chartCaption"></bar-chart>
 </div>
