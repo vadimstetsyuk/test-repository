@@ -9,12 +9,12 @@
 Also, you can select the data you want when hovering over the setting component above chart
 
 
-If you want to run the app:
+# If you want to run the app:
 
-1) npm install
-2) npm start
+- npm install
+- npm start
 
-If you want to pass all the test:
+# If you want to pass all the test:
 
-1) npm install
-2) npm test
+- npm install
+- npm test
